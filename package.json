@@ -11,11 +11,6 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./crud": {
-      "types": "./dist/src/crud.d.ts",
-      "import": "./dist/src/crud.js",
-      "default": "./dist/src/crud.js"
-    },
     "./package.json": "./package.json"
   },
   "files": ["dist"],

@@ -1,1 +1,3 @@
-export { crud } from './src/crud';
+export * from './airtable';
+export * from './crud';
+export * from './query';
