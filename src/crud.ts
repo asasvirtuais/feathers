@@ -3,23 +3,23 @@ import { CRUD, FindProps, CreateProps, UpdateProps, RemoveProps, ListProps } fro
 
 export const crud = <Readable, Writable = Readable>(feathers: Application): CRUD<Readable, Writable> => {
     return {
-        async find({ table, id }: FindProps): Promise<Readable> {
+        async find({ table, id }){
             return feathers.service(table).get(id)
         },
     
-        async create({ table, data }: CreateProps<Writable>): Promise<Readable> {
+        async create({ table, data }) {
             return feathers.service(table).create(data as any)
         },
     
-        async update({ table, id, data }: UpdateProps<Writable>): Promise<Readable> {
-            return feathers.service(table).patch(id, data as any)
+        async update({ table, id, data }) {
+            return feathers.service(table).patch(id, data)
         },
     
-        async remove({ table, id }: RemoveProps): Promise<Readable> {
+        async remove({ table, id }) {
             return feathers.service(table).remove(id)
         },
     
-        async list({ table, query }: ListProps<Readable>): Promise<Readable[]> {
+        async list({ table, query }) {
             const result = await feathers.service(table).find({ query })
             return Array.isArray(result) ? result : result.data || []
         }
