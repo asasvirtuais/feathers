@@ -1,0 +1,36 @@
+{
+  "name": "@asasvirtuais/feathers",
+  "version": "0.1.3",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["src"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asasvirtuais/feathers.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@feathersjs/feathers": "^5.0.34"
+  },
+  "devDependencies": {
+    "@asasvirtuais/crud": "github:asasvirtuais/crud#main",
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  },
+  "keywords": [
+    "feathers",
+    "crud",
+    "api",
+    "service"
+  ],
+  "author": "asasvirtuais",
+  "license": "ISC"
+}
