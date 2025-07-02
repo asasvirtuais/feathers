@@ -25,7 +25,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@asasvirtuais/crud": "workspace:*"
+    "@asasvirtuais/crud": "github:asasvirtuais/crud#main"
   },
   "keywords": [
     "feathers",
