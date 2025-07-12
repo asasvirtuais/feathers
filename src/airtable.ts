@@ -1,6 +1,7 @@
 import { Service } from '@feathersjs/feathers'
 import type { Params as FeathersParams } from '@feathersjs/feathers'
 import { Query, mapQuery } from './query'
+import sdk from '@asasvirtuais/airtable'
 
 export type Params = FeathersParams<Query>
 
@@ -24,36 +25,8 @@ export function mapObjectToAirtableRecord<Data = {}>(data: Data) {
   }
 }
 
-// Generic Airtable API interface
-export interface AirtableAPI {
-  query(params: Record<string, any>): {
-    get(): {
-      json<T>(): Promise<T>
-    }
-  }
-  url(path: string): {
-    get(): {
-      json<T>(): Promise<T>
-    }
-    delete(): {
-      json<T>(): Promise<T>
-    }
-  }
-  post(data: any): {
-    json<T>(): Promise<T>
-  }
-  patch(data: any): {
-    json<T>(): Promise<T>
-  }
-  put(data: any): {
-    json<T>(): Promise<T>
-  }
-}
-
 // Main service factory for Airtable
-export function createAirtableService<T = any, D = Partial<T>>(
-  api: AirtableAPI
-): Service<T, D, Params> {
+export function createAirtableService<T = any, D = Partial<T>>(baseId: string, tableId: string): Service<T, D, Params> {
   
   // Helper to build query params for Airtable API
   function buildQueryParams(selectOptions: any): Record<string, any> {
@@ -69,6 +42,8 @@ export function createAirtableService<T = any, D = Partial<T>>(
     }
     return params
   }
+
+  const api = sdk.api.base(baseId).table(tableId)
 
   return {
     async find(params: Params = {}) {
